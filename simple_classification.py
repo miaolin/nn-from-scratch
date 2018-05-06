@@ -10,12 +10,14 @@ def generate_data():
     return X, y
 
 
-def visualize(X, y, clf):
-    # plt.scatter(X[:, 0], X[:, 1], s=40, c=y, cmap=plt.cm.Spectral)
-    # plt.show()
-    plot_decision_boundary(lambda x: clf.predict(x), X, y)
-    plt.title("Logistic Regression")
-
+def visualize(X, y, clf=None):
+    if not clf:
+        plt.scatter(X[:, 0], X[:, 1], s=40, c=y, cmap=plt.cm.Spectral)
+        plt.show()
+    else:
+        plot_decision_boundary(lambda x: clf.predict(x), X, y)
+        plt.title("Logistic Regression")
+    
 
 def plot_decision_boundary(pred_func, X, y):
     # Set min and max values and give it some padding
@@ -35,13 +37,14 @@ def plot_decision_boundary(pred_func, X, y):
 
 def classify(X, y):
     clf = linear_model.LogisticRegressionCV()
+    
     clf.fit(X, y)
     return clf
 
 
 def main():
     X, y = generate_data()
-    # visualize(X, y)
+    visualize(X, y)
     clf = classify(X, y)
     visualize(X, y, clf)
 
