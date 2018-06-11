@@ -39,7 +39,7 @@ def plot_decision_boundary(pred_func, X, y):
     # Plot the contour and training examples
     plt.contourf(xx, yy, Z, cmap=plt.cm.Spectral)
     plt.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.Spectral)
-    plt.show()
+    #plt.show()
 
 
 def calculate_loss(X, y, model):
@@ -149,13 +149,14 @@ def build_model(X, y, nn_hdim, num_passes=20000, print_loss=False):
     return model
 
 
-def evaluation(X, y):
-    plt.figure(figsize=(16, 32))
-    hidden_layer_dimensions = [1, 2, 3, 4, 5]
+def evaluation(X, y, hidden_layer_dimensions):
+    plt.figure(figsize=(8, 16))
+
     for i, nn_hdim in enumerate(hidden_layer_dimensions):
+        print("Hidden layer size is {}".format(nn_hdim))
         plt.subplot(5, 2, i + 1)
         plt.title('Hidden Layer size %d' % nn_hdim)
-        model = build_model(X, y, nn_hdim, True)
+        model = build_model(X, y, nn_hdim, 2000, True)
         plot_decision_boundary(lambda x: predict(model, x), X, y)
     plt.show()
 
@@ -166,25 +167,11 @@ def main():
     X, y = generate_data(sample_num)
 
     # Build a model with a 3-dimensional hidden layer
-    #nn_hidden_num = 3
-    #model = build_model(X, y, nn_hidden_num, print_loss=True)
+    nn_hidden_num = 3
+    model = build_model(X, y, nn_hidden_num, print_loss=True)
 
-    evaluation(X, y)
+    hidden_layer_dimensions = [1, 2, 3, 4, 5, 10]
+    evaluation(X, y, hidden_layer_dimensions)
 
 if __name__ == "__main__":
     main()
-
-
-# # Plot the decision boundary
-# plot_decision_boundary(lambda x: predict(model, x))
-# plt.title("Decision Boundary for hidden layer size 3")
-#
-# # %% 14
-# plt.figure(figsize=(16, 32))
-# hidden_layer_dimensions = [1, 2, 3, 4, 5, 20, 50]
-# for i, nn_hdim in enumerate(hidden_layer_dimensions):
-#     plt.subplot(5, 2, i + 1)
-#     plt.title('Hidden Layer size %d' % nn_hdim)
-#     model = build_model(nn_hdim)
-#     plot_decision_boundary(lambda x: predict(model, x))
-# plt.show()
