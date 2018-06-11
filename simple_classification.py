@@ -1,12 +1,11 @@
-__author__ = 'm.bashari'
 import numpy as np
 from sklearn import datasets, linear_model
 import matplotlib.pyplot as plt
 
 
-def generate_data():
+def generate_data(sample_num):
     np.random.seed(0)
-    X, y = datasets.make_moons(200, noise=0.20)
+    X, y = datasets.make_moons(sample_num, noise=0.20)
     return X, y
 
 
@@ -37,13 +36,13 @@ def plot_decision_boundary(pred_func, X, y):
 
 def classify(X, y):
     clf = linear_model.LogisticRegressionCV()
-    
     clf.fit(X, y)
     return clf
 
 
 def main():
-    X, y = generate_data()
+    sample_num = 200
+    X, y = generate_data(sample_num)
     visualize(X, y)
     clf = classify(X, y)
     visualize(X, y, clf)

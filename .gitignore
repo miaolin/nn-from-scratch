@@ -3,3 +3,4 @@ venv/
 .xml
 *.ipynb
 .idea/*
+__pycache__
