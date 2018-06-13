@@ -1,13 +1,7 @@
-[**Please read the blog post that goes with this code!**](http://www.wildml.com/2015/09/implementing-a-neural-network-from-scratch/)
+## neural network codes from this blog post (http://www.wildml.com/2015/09/implementing-a-neural-network-from-scratch/)
 
-### iPython notebook setup
+## how to use the code
+* if use locally, use the local environment `nn-test`, `source activate nn-test`
+* otherwise, run `run_install` to install the environment and run the code
 
-```bash
-# Create and activate new virtual environment (optional)
-virtualenv venv
-source venv/bin/activate
-# Install requirements
-pip install -r requirements.txt
-# Start the notebook server
-jupyter notebook
-```
+
