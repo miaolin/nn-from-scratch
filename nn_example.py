@@ -95,8 +95,6 @@ def build_model(X, y, nn_hdim, num_passes=20000, print_loss=False):
     :return:
     """
 
-    #nn_input_dim = 2  # input layer dimensionality
-    #nn_output_dim = 2  # output layer dimensionality
     num_examples = len(X)
 
     # Initialize the parameters to random values. We need to learn these.
